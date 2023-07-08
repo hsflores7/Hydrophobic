@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float maxFastFallSpeed; //Maximum fall speed(terminal velocity) of the player when performing a faster fall.
     private float gravityStrength; // Downwards force (gravity) needed for the desired jump
     private float gravityScale; //Strength of the player's gravity as a multiplier of gravity
+    [SerializeField] private float respawnFloatTime;
+    [SerializeField] private float respawnFallGravityMult;
+    [SerializeField] private float maxRespawnFallspeed;
 
 
     // booleans needed to control movement
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     // timers needed for movement 
      private float LastOnGroundTime;
      private float LastPressedJumpTime;
+     [SerializeField] private float LastRespawnedTime;
 
     [Header("Movement Layers")]
     [SerializeField] private LayerMask _groundLayer;
@@ -96,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
 		LastPressedJumpTime -= Time.deltaTime;
+        LastRespawnedTime -= Time.deltaTime;
 		#endregion
 
         #region INPUT HANDLER
@@ -170,8 +175,15 @@ public class PlayerMovement : MonoBehaviour
         #endregion
         
         #region GRAVITY
+        // Lower gravity if we've just respawned 
+        if (LastRespawnedTime > 0) {
+            // lower gravity if holding down
+			SetGravityScale(gravityScale * respawnFallGravityMult);
+			// Caps maximum fall speed, so can't fall to fast
+			rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Max(rb2d.velocity.y, -maxRespawnFallspeed));
+        }
 		//Higher gravity if we've released the jump input or are falling
-		if (rb2d.velocity.y < 0 && _moveInput.y < 0)
+		else if (rb2d.velocity.y < 0 && _moveInput.y < 0)
 		{
 			//Much higher gravity if holding down
 			SetGravityScale(gravityScale * fastFallGravityMult);
@@ -201,6 +213,10 @@ public class PlayerMovement : MonoBehaviour
 			SetGravityScale(gravityScale);
 		}
 		#endregion
+    }
+
+    public void updateRespawnTime() {
+        LastRespawnedTime = respawnFloatTime;
     }
 
     private void FixedUpdate()

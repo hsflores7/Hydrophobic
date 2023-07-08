@@ -631,6 +631,10 @@ MonoBehaviour:
   maxFallSpeed: 2
   fastFallGravityMult: 2.5
   maxFastFallSpeed: 10
+  respawnFloatTime: 1
+  respawnFallGravityMult: 0.1
+  maxRespawnFallspeed: 2
+  LastRespawnedTime: 0
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -716,4 +720,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2114456199}
+  playerMovement: {fileID: 2114456197}
   respawnPoint: {fileID: 1163099096}
