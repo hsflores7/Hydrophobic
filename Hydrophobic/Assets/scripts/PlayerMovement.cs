@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        IsFacingRight = true;
+        IsFacingRight = false;
     }
 
     #endregion
