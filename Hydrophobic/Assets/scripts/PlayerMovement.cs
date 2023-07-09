@@ -127,35 +127,6 @@ public class PlayerMovement : MonoBehaviour
 		}
 		#endregion
 
-        #region COLLISION CHECKS
-		//Ground Check
-		if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) // checks if set box overlaps with ground
-		{
-            IsGrounded = true;
-            #region KILL ALL MOVEMENT
-            _moveInput.x  = 0;
-            //Calculate the direction we want to move in and our desired velocity
-		    float targetSpeed = 0;
-		
-		    //Calculate difference between current velocity and desired velocity
-		    float speedDif = targetSpeed - rb2d.velocity.x;
-
-		    //Convert this to a vector and apply to rigidbody
-		    rb2d.AddForce(speedDif * Vector2.right, ForceMode2D.Force);
-            #endregion
-
-			LastOnGroundTime = coyoteTime; // sets the lastGrounded to coyoteTime
-            animator.SetBool("isGrounded", true);
-            animator.SetBool("isFalling", false);
-            animator.SetBool("isFloating", false);
-            animator.SetBool("isJumping", false);
-        } else {
-            IsGrounded = false;
-        }	
-
-		
-		#endregion
-
         #region JUMP CHECKS
 
         if (!IsGrounded && rb2d.velocity.y < 0)
@@ -234,6 +205,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
 	{
+        #region COLLISION CHECKS
+		//Ground Check
+		if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) // checks if set box overlaps with ground
+		{
+            IsGrounded = true;
+            #region KILL ALL MOVEMENT
+            _moveInput.x  = 0;
+            //Calculate the direction we want to move in and our desired velocity
+		    float targetSpeed = 0;
+		
+		    //Calculate difference between current velocity and desired velocity
+		    float speedDif = targetSpeed - rb2d.velocity.x;
+
+		    //Convert this to a vector and apply to rigidbody
+		    rb2d.AddForce(speedDif * Vector2.right, ForceMode2D.Force);
+            #endregion
+
+			LastOnGroundTime = coyoteTime; // sets the lastGrounded to coyoteTime
+            animator.SetBool("isGrounded", true);
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isFloating", false);
+            animator.SetBool("isJumping", false);
+        } else {
+            IsGrounded = false;
+        }	
+
+		#endregion
+
         //Jump
 		if (CanJump() && LastPressedJumpTime > 0)
 		{
