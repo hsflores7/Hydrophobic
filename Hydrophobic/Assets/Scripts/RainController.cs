@@ -54,7 +54,10 @@ public class RainController : MonoBehaviour
     }
     */
 
-    
+    var rayDirection = player.position - transform.position;
+    Debug.DrawLine(player.position, transform.position, Color.white);
+
+    /*
     RaycastHit2D hitData = Physics2D.Linecast(transform.position, player.position);
     if (hitData.collider != null) 
     {
@@ -62,6 +65,7 @@ public class RainController : MonoBehaviour
     } else {
         Debug.Log("I See player");
     }
+    */
     
 
   }
