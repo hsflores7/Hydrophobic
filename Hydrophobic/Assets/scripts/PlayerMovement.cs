@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     // components needed to control movement
     private Rigidbody2D rb2d;
+    private Animator animator;
 
     #endregion
 
@@ -89,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         IsFacingRight = false;
     }
 
@@ -130,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
 		if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) // checks if set box overlaps with ground
 		{
             IsGrounded = true;
-
             #region KILL ALL MOVEMENT
             _moveInput.x  = 0;
             //Calculate the direction we want to move in and our desired velocity
@@ -144,9 +145,14 @@ public class PlayerMovement : MonoBehaviour
             #endregion
 
 			LastOnGroundTime = coyoteTime; // sets the lastGrounded to coyoteTime
+            animator.SetBool("isGrounded", true);
+            animator.SetBool("isFalling", false);
+            animator.SetBool("isFloating", false);
+            animator.SetBool("isJumping", false);
         } else {
             IsGrounded = false;
         }	
+
 		
 		#endregion
 
@@ -213,10 +219,25 @@ public class PlayerMovement : MonoBehaviour
 			SetGravityScale(gravityScale);
 		}
 		#endregion
+
+        #region ANIMATIONS
+        animator.SetFloat("vertialVelocity", rb2d.velocity.y);
+        animator.SetBool("isFloating", rb2d.velocity.y < 0 && rb2d.velocity.y >= -maxFallSpeed);
+        animator.SetBool("isFalling", rb2d.velocity.y < -maxFallSpeed);
+        if (!IsGrounded) {
+            animator.SetBool("isGrounded", false);
+        }
+        if (rb2d.velocity.y > 0) {
+            animator.SetBool("isJumping", true);
+        }
+        animator.SetFloat("lastRespawnTime", LastRespawnedTime);
+        #endregion
+    
     }
 
     public void updateRespawnTime() {
         LastRespawnedTime = respawnFloatTime;
+        animator.SetFloat("lastRespawnTime", LastRespawnedTime);
     }
 
     private void FixedUpdate()
@@ -294,6 +315,8 @@ public class PlayerMovement : MonoBehaviour
         
 		#endregion
 
+        animator.SetBool("isGrounded", false);
+        animator.SetBool("isJumping", true);
     }
 
     private void Turn()
