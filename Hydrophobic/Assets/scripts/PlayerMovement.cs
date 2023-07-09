@@ -169,14 +169,6 @@ public class PlayerMovement : MonoBehaviour
             _isJumpFalling = false;
 		}
 
-		//Jump
-		if (CanJump() && LastPressedJumpTime > 0)
-		{
-			IsGrounded = false;
-			_isJumpCut = false;
-			_isJumpFalling = false;
-			Jump();
-		}
 
         #endregion
         
@@ -242,6 +234,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
 	{
+        //Jump
+		if (CanJump() && LastPressedJumpTime > 0)
+		{
+			IsGrounded = false;
+			_isJumpCut = false;
+			_isJumpFalling = false;
+			Jump();
+		}
 		//Handle Horizontal Movement - only happens when jump
 		if (CanMoveHorizontal()) {
 			HorizontalMove(1);
