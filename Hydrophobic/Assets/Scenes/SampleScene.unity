@@ -185,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.2447534
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.68, y: -4.104, z: -10}
+  m_LocalPosition: {x: -10.68, y: -3.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 573524896}
   - component: {fileID: 573524895}
   - component: {fileID: 573524894}
-  - component: {fileID: 573524897}
   m_Layer: 6
   m_Name: BackGround
   m_TagString: Untagged
@@ -381,33 +380,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &573524897
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573524893}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1138242753
 GameObject:
   m_ObjectHideFlags: 3
@@ -566,7 +538,7 @@ MonoBehaviour:
   m_Follow: {fileID: 2114456199}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7.2447534
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -591,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623140208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.68, y: -4.104, z: -10}
+  m_LocalPosition: {x: -10.68, y: -3.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -914,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171168157965813296, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.104
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 4171168157965813296, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -947,14 +919,6 @@ PrefabInstance:
     - target: {fileID: 4171168157965813296, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6683463733553598489, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6683463733553598489, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7423026628055629550, guid: 0be10b858e10f644b8058faa1c996c30, type: 3}
       propertyPath: m_Name
