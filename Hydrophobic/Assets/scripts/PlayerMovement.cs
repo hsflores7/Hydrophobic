@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Stats")]
     [SerializeField] private float horizontalMaxSpeed;
     [SerializeField] private float horizontalAcceleration;
-    private float horizontalAccelAmount; //The actual force (multiplied with speedDiff) applied to the player.
+    [SerializeField] private float horizontalAccelAmount; //The actual force (multiplied with speedDiff) applied to the player.
 	[SerializeField] private float horizontalDecceleration; //The speed at which our player decelerates from their current speed.
-	private float horizontalDeccelAmount; //Actual force (multiplied with speedDiff) applied to the player.
+	[SerializeField] private float horizontalDeccelAmount; //Actual force (multiplied with speedDiff) applied to the player.
     private Vector2 _moveInput;
     [SerializeField] private bool doConserveMomentum;
 
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Stats")]
     [SerializeField] private float jumpHeight; //Height of the player's jump.
 	[SerializeField] private float jumpTimeToApex; //Time between applying the jump force and reaching the desired jump height.
-	private float jumpForce; //The actual force applied (upwards) to the player when they jump.
+	[SerializeField] private float jumpForce; //The actual force applied (upwards) to the player when they jump.
     [SerializeField] private float jumpInputBufferTime;
     [SerializeField] private float coyoteTime; // Grace period after falling off a platform, where you can still jump
 
@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float maxFallSpeed; //Maximum fall speed (terminal velocity) of the player when falling.
 	[SerializeField] private float fastFallGravityMult; //Larger multiplier to the player's gravityScale when they press down
 	[SerializeField] private float maxFastFallSpeed; //Maximum fall speed(terminal velocity) of the player when performing a faster fall.
-    private float gravityStrength; // Downwards force (gravity) needed for the desired jump
-    private float gravityScale; //Strength of the player's gravity as a multiplier of gravity
+    [SerializeField] private float gravityStrength; // Downwards force (gravity) needed for the desired jump
+    [SerializeField] private float gravityScale; //Strength of the player's gravity as a multiplier of gravity
     [SerializeField] private float respawnFloatTime;
     [SerializeField] private float respawnFallGravityMult;
     [SerializeField] private float maxRespawnFallspeed;
