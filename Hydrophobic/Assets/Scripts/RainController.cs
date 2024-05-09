@@ -6,8 +6,8 @@ public class RainController : MonoBehaviour
 {
   // timers
   [SerializeField] private float timeSinceLastDownPour;
-  [SerializeField] private float timeInBetweenDownPourAndDrizzel;
-  [SerializeField] private float timeForDrizzel;
+  [SerializeField] private float timeInBetweenDownPourAndDrizzle;
+  [SerializeField] private float timeForDrizzle;
   [SerializeField] private float timeForDownPour;
 
   [SerializeField] private float distanceAbovePlayer;
@@ -26,22 +26,18 @@ public class RainController : MonoBehaviour
   void Update()
   {
     
-    // move above the character 
+    // move the rain controller above the character 
     Vector3 position = player.position;
     position.y += distanceAbovePlayer;
     transform.position = position;
 
-    /*
-
-    // what way to point to hit player
-    var rayDirection = player.position - transform.position;
-
-    // cast the ray
-
-    RaycastHit2D hitData = Physics2D.Raycast(transform.position, rayDirection, distanceAbovePlayer + 30f);
-    if (hitData.collider != null)
+    // cast the ray (filter to only look at layer 8 and 6)
+    RaycastHit2D hitData = Physics2D.Linecast(transform.position, player.position, 1 << 8 | 1 << 6);
+    
+    // check if the player is hit
+    if (hitData.rigidbody != null)
     {
-      if (hitData.transform.gameObject.layer == 8) // player
+      if (hitData.rigidbody.gameObject.layer == 8) // player
       {
         Debug.Log("I see the player");
       }
@@ -52,21 +48,5 @@ public class RainController : MonoBehaviour
     } else {
         Debug.Log("I see nothing");
     }
-    */
-
-    var rayDirection = player.position - transform.position;
-    Debug.DrawLine(player.position, transform.position, Color.white);
-
-    /*
-    RaycastHit2D hitData = Physics2D.Linecast(transform.position, player.position);
-    if (hitData.collider != null) 
-    {
-      Debug.Log("blocked");
-    } else {
-        Debug.Log("I See player");
-    }
-    */
-    
-
   }
 }

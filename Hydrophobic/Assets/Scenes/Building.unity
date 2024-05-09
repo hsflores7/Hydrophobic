@@ -553,6 +553,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7511294892214518700, guid: 3c0058f5cf25fdc4fa46aad50d74d580, type: 3}
   m_PrefabInstance: {fileID: 4172346382676394183}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1536685054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536685055}
+  - component: {fileID: 1536685056}
+  m_Layer: 0
+  m_Name: RainController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1536685055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536685054}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5579662, y: -0.0065567493, z: -4.012397}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945903598}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536685056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536685054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5092e6ed6d3b3b140be26e0ff9affe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSinceLastDownPour: 0
+  timeInBetweenDownPourAndDrizzle: 0
+  timeForDrizzle: 0
+  timeForDownPour: 0
+  distanceAbovePlayer: 0
+  player: {fileID: 2114456199}
+  playerRespawn: {fileID: 2114456200}
 --- !u!1 &1623140208
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +741,7 @@ Transform:
   - {fileID: 1440733602}
   - {fileID: 938185472}
   - {fileID: 1070162405}
+  - {fileID: 1536685055}
   - {fileID: 573524896}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -725,8 +777,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSinceLastDownPour: 0
-  timeInBetweenDownPourAndDrizzel: 0
-  timeForDrizzel: 0
+  timeInBetweenDownPourAndDrizzle: 0
+  timeForDrizzle: 0
   timeForDownPour: 0
   distanceAbovePlayer: 4
   player: {fileID: 2114456199}
